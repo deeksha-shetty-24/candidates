@@ -1,0 +1,58 @@
+<form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" class="form">
+  <h4>Create candidate</h4>
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstName" required>
+      <mat-error *ngIf="candidateForm.get('firstName')?.hasError('required')">
+        First Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastName" required>
+      <mat-error *ngIf="candidateForm.get('lastName')?.hasError('required')">
+        Last Name is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Phone Number</mat-label>
+      <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+      <mat-error *ngIf="candidateForm.get('phoneNumber')?.hasError('required')">
+        Phone Number is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email" required>
+      <mat-error *ngIf="candidateForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Address" formControlName="address" required>
+      <mat-error *ngIf="candidateForm.get('address')?.hasError('required')">
+        Address is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Experience (in years)</mat-label>
+      <input matInput placeholder="Experience (in years)" formControlName="experienceInYears" required>
+      <mat-error *ngIf="candidateForm.get('experienceInYears')?.hasError('required')">
+        Experience is required
+      </mat-error>
+    </mat-form-field>
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">
+  </div>
+
+  <div class="button-row" style="float: right; margin-right: 20px;">
+    <button mat-raised-button color="primary" type="button" style="margin-right: 10px;">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </div>
+</form>
