@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Candidate.Entity;
+using Candidate.Model;
 
 namespace Candidate.Web.Infrastructure
 {
@@ -7,6 +8,11 @@ namespace Candidate.Web.Infrastructure
     {
         public AutoMapperConfig()
         {
+            // Entity to Model
+            CreateMap<Applicant, ApplicantModel>();
+
+            // Model to Entity
+            CreateMap<ApplicantModel, Applicant>();
         }
     }
 }

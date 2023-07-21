@@ -44,5 +44,24 @@ namespace Candidate.Repository
             return await this.dbset.Where(predicate).ToListAsync().ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// To get all entities asynchronously.
+        /// </summary>
+        /// <param name="includes">The 0 or more navigation properties to include for EF eager loading.</param>
+        /// <returns>The list of entities</returns>
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await this.dbset.ToListAsync().ConfigureAwait(false);
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
+
+        public void Remove(T entity)
+        {
+            _context.Remove(entity);
+        }
     }
 }

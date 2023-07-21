@@ -8,7 +8,9 @@ namespace Candidate.Repository.Contracts
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-
         Task<List<T>> GetByAsync(Expression<Func<T, bool>> predicate);
+        Task<int> SaveChangesAsync();
+        Task<List<T>> GetAllAsync();
+        void Remove(T entity);
     }
 }

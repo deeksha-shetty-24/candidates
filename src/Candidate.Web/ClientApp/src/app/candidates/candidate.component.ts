@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Candidate } from '../models/candidate';
-import { CandidateService } from '../services/candidate.service';
+import { Candidate } from './models/candidate.model.';
+import { CandidateService } from './services/candidate.service';
 
 @Component({
-  selector: 'app-candidates',
-  templateUrl: './candidates.component.html',
-  styleUrls: ['./candidates.component.css']
+  selector: 'app-candidate',
+  templateUrl: './candidate.component.html',
+  styleUrls: ['./candidate.component.css']
 })
-export class CandidatesComponent implements OnInit {
+export class CandidateComponent implements OnInit {
 
   candidates: Candidate[] = [];
   displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber', 'email', 'address', 'experienceInYears', 'actions'];
@@ -25,18 +25,17 @@ export class CandidatesComponent implements OnInit {
     });
   }
 
-  editCandidate (candidate: Candidate) {
-    this.router.navigate(['/candidates/edit', candidate.id]);
+  editCandidate(candidate: Candidate) {
+    this.router.navigate(['/candidate/edit', candidate.id]);
   }
 
-  deleteCandidate (candidate: Candidate) {
+  deleteCandidate(candidate: Candidate) {
     this.candidateService.deleteCandidate(candidate.id).subscribe(() => {
       this.getCandidates();
     });
   }
 
-  onCreateCandidate () {
-    this.router.navigate(['/candidates/create']);
+  onCreateCandidate() {
+    this.router.navigate(['/candidate/create']);
   }
-
 }

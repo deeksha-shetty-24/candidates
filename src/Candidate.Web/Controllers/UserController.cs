@@ -1,26 +1,26 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Candidate.Business.Contracts;
+using Candidate.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Candidate.Web.Controllers
 {
-    [ApiController]
     [Route("api/user")]
     public class UserController : BaseController
     {
-        public UserController() { }
+        private readonly IUserBusiness _userBusiness;
+        public UserController(IUserBusiness userBusiness)
+        {
+            _userBusiness = userBusiness;
+        }
 
 
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
-        //{
-        //    var authModel = await _userBusiness.GetUserDetails(loginModel);
-        //    if (authModel.Error == null)
-        //    {
-        //        await _userBusiness.PopulateJwtTokenAsync(authModel);
-        //        await _userBusiness.UpdatelastLogin(authModel);
-        //    }
-        //    return Ok(authModel);
-        //}
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
+        {
+            var authModel = await _userBusiness.GetUserDetails(loginModel);
+            return Ok(authModel);
+        }
     }
 }

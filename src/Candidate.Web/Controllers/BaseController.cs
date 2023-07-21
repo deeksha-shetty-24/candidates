@@ -2,8 +2,8 @@
 
 namespace Candidate.Web.Controllers
 {
-
-    public class BaseController : ControllerBase
+    [ApiController]
+    public class BaseController : Controller
     {
     }
 }

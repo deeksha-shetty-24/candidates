@@ -1,0 +1,26 @@
+.form {
+    position: fixed;
+    top: 100px;
+    left: 28px;
+}
+
+.form-field {
+    padding-right: 20px;
+}
+
+.pointer-link {
+    cursor: pointer;
+}
+
+a:hover {
+    color: blue;
+    transition: 0.2s;
+}
+
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+}

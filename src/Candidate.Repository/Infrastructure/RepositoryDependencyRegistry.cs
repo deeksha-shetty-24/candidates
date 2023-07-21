@@ -15,6 +15,7 @@ namespace Candidate.Repository.Infrastructure
             });
             services.AddDbContext<CandidateDbContext>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IApplicantRepository, ApplicantRepository>();
         }
     }
 }

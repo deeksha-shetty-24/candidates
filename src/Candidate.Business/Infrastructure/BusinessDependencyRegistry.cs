@@ -11,6 +11,7 @@ namespace Candidate.Business.Infrastructure
         {
             RepositoryDependencyRegistry.RegisterDependency(services, appSettings);
             services.AddTransient<IUserBusiness, UserBusiness>();
+            services.AddTransient<IApplicantBusiness, ApplicantBusiness>();
         }
     }
 }

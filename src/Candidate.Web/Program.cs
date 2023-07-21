@@ -16,7 +16,10 @@ configuration.Bind(configRoot);
 
 // Add services to the container.
 builder.Services.RegisterDependency(configRoot.AppSettings);
+
+builder.Services.AddAuthentication(ApiKeyAuthenticationOptions.DefaultScheme).AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyAuthenticationOptions.DefaultScheme, null); ;
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("http://localhost:4200/")
@@ -57,6 +60,12 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.MapRazorPages();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action=Index}/{id?}");
+    endpoints.MapControllers();
+});
 
 app.Run();

@@ -10,6 +10,7 @@ namespace Candidate.Web.Infrastructure
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton(appSettings);
             services.AddScoped<ApplicationContext>();
+            services.AddScoped<ApiKeyAuthenticationHandler>();
             services.AddMemoryCache();
             BusinessDependencyRegistry.RegisterDependency(services, appSettings);
         }
