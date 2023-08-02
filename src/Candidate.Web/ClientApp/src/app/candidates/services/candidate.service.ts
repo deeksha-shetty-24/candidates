@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Candidate } from '../models/candidate.model.';
+import { Candidate } from '../models/candidate.model';
 import { CandidateURLConstants } from '../../shared/constants/url-constants';
 
 @Injectable({

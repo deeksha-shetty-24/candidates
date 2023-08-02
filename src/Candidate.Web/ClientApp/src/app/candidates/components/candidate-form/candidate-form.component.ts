@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CandidateService } from '../../services/candidate.service';
-import { Candidate } from '../../models/candidate.model.';
+import { Candidate } from '../../models/candidate.model';
 
 @Component({
   selector: 'app-candidate-form',
