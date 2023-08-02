@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵisObservable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Candidate } from './models/candidate.model';
 import { CandidateService } from './services/candidate.service';
