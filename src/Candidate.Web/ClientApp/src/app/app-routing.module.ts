@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { CandidateComponent } from './candidates/candidate.component';
-import { CandidateFormComponent } from './candidates/components/candidate-form/candidate-form.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
@@ -16,17 +13,7 @@ const routes: Routes = [
     path: 'candidate',
     loadChildren: () => import('./candidates/candidate.module').then(m => m.CandidateModule),
     canActivate: [AuthGuard]
-  },
-  // {
-  //   path: 'candidates/create',
-  //   component: CandidateFormComponent,
-  //   canActivate: [AuthGuard]
-  // },
-  // {
-  //   path: 'candidates/edit/:id',
-  //   component: CandidateFormComponent,
-  //   canActivate: [AuthGuard]
-  // }
+  }
 ];
 
 @NgModule({

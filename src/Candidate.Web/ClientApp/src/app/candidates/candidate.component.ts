@@ -21,7 +21,7 @@ export class CandidateComponent implements OnInit {
     private _candidateDispatcher: CandidateDispatcher,) { }
 
   ngOnInit(): void {
-    this.getCandidates();
+    // this.getCandidates();
     this._candidateDispatcher.loadCandidates();
     // this.candidates$ = 
   }
