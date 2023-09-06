@@ -22,5 +22,12 @@ namespace Candidate.Web.Controllers
             var authModel = await _userBusiness.GetUserDetails(loginModel);
             return Ok(authModel);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> LoginSample()
+        {
+            return Ok("Test");
+        }
     }
 }

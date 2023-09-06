@@ -16,7 +16,7 @@ export class CandidateFormComponent implements OnInit {
   srcResult: any;
   selectedFile: File;
   filePreview: string | ArrayBuffer | null = null;
-  candidate: Candidate;
+  candidate = {} as Candidate;
   fileName: string;
   isNewFileSelected: boolean;
   blob: Blob;
@@ -71,6 +71,7 @@ export class CandidateFormComponent implements OnInit {
 
   onSubmit() {
     const formData: FormData = new FormData();
+    this.candidate = { ...this.candidateForm.value };
     if (this.isNewFileSelected) {
       this.candidate.fileName = this.selectedFile.name;
       formData.append('file', this.selectedFile, this.selectedFile.name);
@@ -80,7 +81,6 @@ export class CandidateFormComponent implements OnInit {
       formData.append('file', file, file.name);
     }
 
-    this.candidate = { ...this.candidateForm.value };
     if (!this.candidateForm.valid) {
       return;
     }
