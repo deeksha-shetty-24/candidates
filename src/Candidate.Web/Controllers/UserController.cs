@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Candidate.Web.Controllers
 {
-    [Route("api/user")]
+    //[Route("api/user")]
     public class UserController : BaseController
     {
         private readonly IUserBusiness _userBusiness;
@@ -23,8 +23,9 @@ namespace Candidate.Web.Controllers
             return Ok(authModel);
         }
 
-        [AllowAnonymous]
+       
         [HttpGet]
+        [Route("LoginSample")]
         public async Task<IActionResult> LoginSample()
         {
             return Ok("Test");
