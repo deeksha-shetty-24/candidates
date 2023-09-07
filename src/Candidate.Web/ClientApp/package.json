@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "json-server ./DB/db.json"
+    "server": "json-server ./DB/db.json",
+    "release-dev": "ng build --configuration development"
   },
   "private": true,
   "dependencies": {

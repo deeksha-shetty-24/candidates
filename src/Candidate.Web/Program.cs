@@ -1,6 +1,7 @@
 using AutoMapper;
 using Candidate.Common;
 using Candidate.Web.Infrastructure;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,10 @@ builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "ClientApp/dist/candidates";
+});
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -57,7 +62,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
-
+if (!app.Environment.IsDevelopment())
+{
+    app.UseSpaStaticFiles();
+}
 app.UseStaticFiles();
 
 app.UseEndpoints(endpoints =>
@@ -66,6 +74,16 @@ app.UseEndpoints(endpoints =>
         name: "default",
         pattern: "{controller}/{action=Index}/{id?}");
     endpoints.MapControllers();
+});
+
+app.UseSpa(spa =>
+{
+    spa.Options.SourcePath = "ClientApp";
+
+    if (app.Environment.IsDevelopment())
+    {
+        spa.UseAngularCliServer(npmScript: "start");
+    }
 });
 
 app.Run();
