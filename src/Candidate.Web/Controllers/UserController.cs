@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Candidate.Web.Controllers
 {
-    //[Route("api/user")]
+    [Route("api/user")]
     public class UserController : BaseController
     {
         private readonly IUserBusiness _userBusiness;
